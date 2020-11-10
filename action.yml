@@ -9,7 +9,7 @@ runs:
   using: "composite"
   steps:
     - run: |
-        curl -sSL -o get-poetry.py https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
-        curl -o poetry-${{ inputs.poetry-version }}-linux.tar.gz https://github.com/python-poetry/poetry/releases/download/${{ inputs.poetry-version }}/poetry-${{ inputs.poetry-version }}-linux.tar.gz
-        python get-poetry.py --file=poetry-${{ inputs.poetry-version }}-linux.tar.gz
+        wget https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
+        wget https://github.com/python-poetry/poetry/releases/download/${{ inputs.poetry-version }}/poetry-${{ inputs.poetry-version }}-linux.tar.gz
+        python get-poetry.py --force -y --file=poetry-${{ inputs.poetry-version }}-linux.tar.gz
       shell: bash
