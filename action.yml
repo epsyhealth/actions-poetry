@@ -9,9 +9,7 @@ runs:
   using: "composite"
   steps:
     - run: |
-        wget --quiet https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
-        wget --quiet https://github.com/python-poetry/poetry/releases/download/${{ inputs.poetry-version }}/poetry-${{ inputs.poetry-version }}-linux.tar.gz
-        python get-poetry.py --force -y --file=poetry-${{ inputs.poetry-version }}-linux.tar.gz
+        curl -sSL https://install.python-poetry.org | python3 - --yes --version ${{ inputs.poetry-version }}
         echo "$HOME/.poetry/bin" >> $GITHUB_PATH
         source $HOME/.poetry/env
         poetry --version
